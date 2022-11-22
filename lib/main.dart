@@ -12,8 +12,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Book Store',
       theme: ThemeData(
+        backgroundColor: Colors.white,
+        primaryColor: Colors.white,
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          toolbarHeight: 80,
+        ),
         fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
       ),

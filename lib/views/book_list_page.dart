@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:book_store/Models/book_list_response.dart';
+import 'package:book_store/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -43,12 +44,16 @@ class _BookListPageState extends State<BookListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff9fbfe),
       appBar: AppBar(
-        elevation: 0,
-        toolbarHeight: 80,
-        backgroundColor: Color(0xfff9fbfe),
-        title: const Center(child: Text('Book Store', style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),)),
+        title: Center(
+          child: Text(
+            'Book Store',
+            style: titleTextStyle!.copyWith(
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
       ),
       body: Container(
         child: isLoading
@@ -62,19 +67,7 @@ class _BookListPageState extends State<BookListPage> {
                   return Container(
                     margin: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Color(0xff4ccfc9),
-                          blurRadius: 0,
-                          spreadRadius: -5,
-                          offset: Offset(10, 10),
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(10),
-                      color: Color(0xfff9fbfe),
-                      border: Border.all(color: Color(0xff202124), strokeAlign: StrokeAlign.inside),
-                    ),
+                    decoration: myBoxDecoration,
                     child: Row(
                       children: [
                         Image.network(
@@ -93,13 +86,7 @@ class _BookListPageState extends State<BookListPage> {
                               children: [
                                 Text(
                                   currentBook.title!,
-                                  style: const TextStyle(
-                                    color: Color(0xff202124),
-                                    fontSize: 16,
-                                    height: 1,
-                                    fontWeight: FontWeight.bold,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
+                                  style: titleTextStyle,
                                   maxLines: 2,
                                 ),
                                 const SizedBox(
@@ -107,12 +94,7 @@ class _BookListPageState extends State<BookListPage> {
                                 ),
                                 Text(
                                   currentBook.price!,
-                                  style: const TextStyle(
-                                    color: Color(0xff949691),
-                                    fontSize: 16,
-                                    height: 1,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: priceTextStyle,
                                 ),
                               ],
                             ),
