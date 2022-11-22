@@ -43,10 +43,12 @@ class _BookListPageState extends State<BookListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xfff9fbfe),
       appBar: AppBar(
         elevation: 0,
         toolbarHeight: 80,
-        title: const Center(child: Text('Book Catalogue')),
+        backgroundColor: Color(0xfff9fbfe),
+        title: const Center(child: Text('Book Store', style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),)),
       ),
       body: Container(
         child: isLoading
@@ -59,11 +61,19 @@ class _BookListPageState extends State<BookListPage> {
                   final currentBook = bookList!.books![index];
                   return Container(
                     margin: const EdgeInsets.symmetric(
-                      horizontal: 20, vertical: 10
-                    ),
+                        horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Color(0xff4ccfc9),
+                          blurRadius: 0,
+                          spreadRadius: -5,
+                          offset: Offset(10, 10),
+                        ),
+                      ],
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey[200],
+                      color: Color(0xfff9fbfe),
+                      border: Border.all(color: Color(0xff202124), strokeAlign: StrokeAlign.inside),
                     ),
                     child: Row(
                       children: [
@@ -84,15 +94,23 @@ class _BookListPageState extends State<BookListPage> {
                                 Text(
                                   currentBook.title!,
                                   style: const TextStyle(
-                                      fontSize: 18, fontWeight: FontWeight.bold,
-                                  overflow: TextOverflow.ellipsis,
+                                    color: Color(0xff202124),
+                                    fontSize: 16,
+                                    height: 1,
+                                    fontWeight: FontWeight.bold,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                  maxLines: 3,
+                                  maxLines: 2,
+                                ),
+                                const SizedBox(
+                                  height: 10,
                                 ),
                                 Text(
                                   currentBook.price!,
                                   style: const TextStyle(
+                                    color: Color(0xff949691),
                                     fontSize: 16,
+                                    height: 1,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -103,7 +121,8 @@ class _BookListPageState extends State<BookListPage> {
                         Expanded(
                           child: IconButton(
                             onPressed: () {},
-                            icon: const Icon(Icons.keyboard_arrow_right_rounded),
+                            icon:
+                                const Icon(Icons.keyboard_arrow_right_rounded),
                           ),
                         ),
                       ],
